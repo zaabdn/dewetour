@@ -7,7 +7,7 @@ function Card() {
   return (
     <div className="group">
       <img src={palm} alt="Gambar" align="left" />
-      <h1 className="title-group">Group Tour</h1>
+      <h1>Group Tour</h1>
       <div className="groups">
         {groupImage.map((group) => (
           <div className="group-content" key={group.id}>

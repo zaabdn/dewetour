@@ -4,7 +4,7 @@ import { infoTours } from "../Data/Info";
 import hibiscus from "../../Images/hibiscus.png";
 
 function InfoCard() {
-  return (
+  return ( 
     <div className="content">
       <img src={hibiscus} alt="Gambar" align="right" className="hibiscus" />
       {infoTours.map((info) => (

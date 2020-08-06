@@ -1,51 +1,46 @@
 .App-header {
-    position: absolute;
     width: 100%;
     height: 547px;
-    top: -12px;
     background: url('../../Images/jumbrotron.png');
     background-size: cover;
 }
 
 .Header {
-    position: absolute;
     width: 100%;
     height: 74px;
-    left: 0px;
-    top: 0px;
-
     filter: drop-shadow(0px 4px 20px rgba(0, 0, 0, 0.25));
 }
 
 .header-left {
-    position: absolute;
+    float: left;
     width: 230px;
     height: 75px;
-    left: 90px;
-    top: 10px;
+    margin-left: 90px;
     background: url('../../Images/Icon.png');
     filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
 }
 
+.header-right {
+    float: right;
+    margin-top: 20px;
+    max-width: 20%;
+    margin-right: 90px;
+}
+
 .btn-login {
-    position: absolute;
     width: 100px;
     height: 30px;
-    left: 1020px;
-    top: 23px;
     border: 1px solid #FFFFFF;
     box-sizing: border-box;
     border-radius: 5px;
     color: white;
+    margin-right: 20px;
     background: transparent;
 }
 
 .btn-register {
-    position: absolute;
     width: 100px;
     height: 30px;
-    left: 1135px;
-    top: 23px;
     border: 0;
     background: #FFAF00;
     border-radius: 5px;
@@ -53,37 +48,28 @@
 }
 
 .header-title {
-    position: absolute;
-    width: 715px;
+    margin-top: 120px;
+    width: 50%;
     height: 145px;
-}
-
-.header-title h1 {
-    position: absolute;
-    font-size: 48px;
-    line-height: 78px;
+    font-size: 24px;
+    line-height: 20px;
     color: #FFFFFF;
 }
 
 .text-header {
-    left: 90px;
-    top: 120px;
     font-weight: bold;
+    margin-left: 90px;
 }
 
 .text-title {
-    top: 170px;
-    width: 800px;
     font-weight: lighter;
-    left: -10px;
+    margin-left: 90px;
 }
 
 .header-search {
-    position: absolute;
-    width: 860px;
+    width: 88%;
     height: 83px;
-    top: 300px;
-    left: 90px;
+    margin-left: 90px;
 }
 
 .header-search p {
@@ -93,23 +79,18 @@
 }
 
 .input-search {
-    position: absolute;
-    width: 995px;
+    width: 89%;
     height: 50px;
-    top: 54px;
-    left: 0px;
-    right: 0px;
     border: 0;
     background: #FFFFFF;
     border-radius: 5px 0px 0px 5px;
 }
 
 .btn-search {
-    position: absolute;
-    width: 136px;
+    width: 10%;
     height: 50px;
-    left: 1000px;
-    top: 54px;
+    /* left: 1000px;
+    top: 54px; */
     border: 0;
     background: #FFAF00;
     color: #FFFFFF;

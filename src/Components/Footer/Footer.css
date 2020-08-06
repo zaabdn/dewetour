@@ -1,18 +1,18 @@
 .App-footer {
-    position: absolute;
+    position: relative;
     width: 100%;
-    height: 289px;
-    top: 954px
+    text-align: center;
 }
 
 .App-footer img {
-    margin-top: 945px;
+    position: absolute;
+    right: 0;
+    bottom: 0;
 }
 
 .footer {
-    position: absolute;
+    padding-top: 5px;
     width: 100%;
     height: 54px;
-    top: 1045px;
     background: #FFAF00;
 }
