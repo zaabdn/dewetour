@@ -1,22 +1,27 @@
 import React from "react";
-import "./Login.css";
+import "./Register.css";
 import palm from "../../Images/palm1.png";
 import hibiscus from "../../Images/hibiscus1.png";
 
-const Login = ({ showModalLogin, closeModalLogin }) => {
+const Register = ({ showModalLogin, closeModalRegister }) => {
   return (
     <div className="App-login">
       <div
         className="modal"
         onClick={() => {
-          closeModalLogin();
+          closeModalRegister();
         }}
+        style={{ paddingTop: "20px" }}
       >
         <div className="modal-content">
           <img src={palm} alt="Footer" align="left" width="150px" />
           <img src={hibiscus} alt="Footer" align="right" width="70px" />
-          <h1 style={{ position: "absolute", left: "47%" }}>LOGIN</h1>
+          <h1 style={{ position: "absolute", left: "45%" }}>REGISTER</h1>
           <div className="input-text">
+            <div className="form-group">
+              <h3>Full Name</h3>
+              <input type="text" className="custom-input" />
+            </div>
             <div className="form-group">
               <h3>Email</h3>
               <input type="text" className="custom-input" />
@@ -25,18 +30,22 @@ const Login = ({ showModalLogin, closeModalLogin }) => {
               <h3>Password</h3>
               <input type="password" className="custom-input" />
             </div>
+            <div className="form-group">
+              <h3>Phone</h3>
+              <input type="number" className="custom-input" />
+            </div>
+            <div className="form-group">
+              <h3>Address</h3>
+              <textarea className="custom-input" rows="8"></textarea>
+            </div>
             <div className="form-group" style={{ marginTop: "50px" }}>
-              <button className="button">Login</button>
+              <button className="button">Register</button>
             </div>
           </div>
-          <p align="center">
-            Don't have an account ? Klik
-            <span style={{ fontWeight: "900", cursor: "pointer" }}>Here</span>
-          </p>
         </div>
       </div>
     </div>
   );
 };
 
-export default Login;
+export default Register;

@@ -8,8 +8,8 @@
 .groups {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    grid-gap: 80px;
-    margin-top: 70px;
+    grid-gap: 70px;
+    padding: 30px 30px 0 100px;
 }
 
 .group-content {
@@ -17,6 +17,7 @@
     height: 400px;
     background: white;
     border-radius: 5px;
+    text-decoration: none;
 }
 
 .box {

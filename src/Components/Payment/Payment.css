@@ -1,0 +1,39 @@
+.App-payment {
+    width: 70%;
+    position: absolute;
+    top: 80px;
+    background: rgb(243, 243, 243);
+    padding: 0 200px;
+}
+
+.payment {
+
+    max-width: 100%;
+    background: white;
+    -webkit-box-shadow: 0 10px 6px -6px #777;
+    -moz-box-shadow: 0 10px 6px -6px #777;
+    box-shadow: 0 10px 6px -6px #777;
+    margin-top: 50px;
+    border-radius: 10px;
+}
+
+.payment-header {
+    margin-top: 0px;
+    width: 100%;
+}
+
+.payment-header img {
+    margin-left: 20px;
+    margin-left: 20px;
+}
+
+.payment-header p {
+    font-size: 14px;
+    color: grey;
+    margin-top: 0px;
+}
+
+.payment-detail {
+    display: flex;
+    margin-left: 20px;
+}
