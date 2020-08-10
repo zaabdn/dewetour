@@ -1,0 +1,49 @@
+.App-add {
+    width: 70.35%;
+    position: absolute;
+    top: 80px;
+    background: rgb(243, 243, 243);
+    padding: 0 200px 100px;
+}
+
+.form-group {
+    margin-top: 100px;
+}
+
+.add-trip {
+    max-width: 100%;
+    margin-top: 50px;
+    border-radius: 10px;
+}
+
+.duration {
+    width: 20%;
+    margin-right: 10px;
+}
+
+input {
+    width: 100%;
+    height: 35px;
+    border: 0;
+    background: rgba(196, 196, 196, 0.5);
+    box-sizing: border-box;
+    border-radius: 5px;
+}
+
+.desc {
+    height: 150px;
+}
+
+.img {
+    width: auto;
+}
+
+.btn-trip {
+    padding: 15px 70px;
+    background: #ffaf00;
+    border: 0;
+    border-radius: 5px;
+    margin: 50px;
+    color: white;
+    font-weight: bolder;
+}

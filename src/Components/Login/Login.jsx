@@ -3,7 +3,7 @@ import "./Login.css";
 import palm from "../../Images/palm1.png";
 import hibiscus from "../../Images/hibiscus1.png";
 
-const Login = ({ showModalLogin, closeModalLogin }) => {
+const Login = ({ showModalLogin, closeModalLogin, handleLogin }) => {
   return (
     <div className="App-login">
       <div
@@ -17,16 +17,18 @@ const Login = ({ showModalLogin, closeModalLogin }) => {
           <img src={hibiscus} alt="Footer" align="right" width="70px" />
           <h1 style={{ position: "absolute", left: "47%" }}>LOGIN</h1>
           <div className="input-text">
-            <div className="form-group">
+            <div className="login-group">
               <h3>Email</h3>
               <input type="text" className="custom-input" />
             </div>
-            <div className="form-group">
+            <div className="login-group">
               <h3>Password</h3>
               <input type="password" className="custom-input" />
             </div>
-            <div className="form-group" style={{ marginTop: "50px" }}>
-              <button className="button">Login</button>
+            <div className="login-group" style={{ marginTop: "50px" }}>
+              <button className="button" onClick={() => handleLogin()}>
+                Login
+              </button>
             </div>
           </div>
           <p align="center">

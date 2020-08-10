@@ -1,25 +1,45 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Header.css";
-import Jumbotron from "../Jumbotron/Jumbotron";
-// import { Link } from "react-router-dom";
+import Dropdown from "../Dropdown/Dropdown";
+import profile from "../../Images/profile.png";
 
-const Header = ({ showModalLogin, showModalRegister }) => {
+import { Link } from "react-router-dom";
+
+const Header = ({ isLogin, showModalLogin, showModalRegister }) => {
+  const [isProfileDropdown, setProfileDropdown] = useState(false);
+
+  const showProfileDropdown = () => {
+    setProfileDropdown(!isProfileDropdown);
+  };
+
   return (
     <div className="App-header">
       <div className="Header">
-        <div className="header-left"></div>
+        <Link to="/">
+          <div className="header-left"></div>
+        </Link>
         <div className="header-right">
-          <button
-            className="btn-login"
-            onClick={() => {
-              showModalLogin();
-            }}
-          >
-            Login
-          </button>
-          <button className="btn-register" onClick={() => showModalRegister()}>
-            Register
-          </button>
+          {!isLogin && (
+            <div>
+              <button className="btn-login" onClick={() => showModalLogin()}>
+                Login
+              </button>
+              <button
+                className="btn-register"
+                onClick={() => showModalRegister()}
+              >
+                Register
+              </button>
+            </div>
+          )}
+          {isLogin && (
+            <div className="profile-header">
+              <img src={profile} alt="" onClick={() => showProfileDropdown()} />
+            </div>
+          )}
+          {isProfileDropdown && (
+            <Dropdown showProfileDropdown={showProfileDropdown} />
+          )}
         </div>
       </div>
     </div>

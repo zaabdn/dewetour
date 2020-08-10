@@ -1,0 +1,36 @@
+.App-dropdown {
+    /* position: absolute;
+    position: fixed; */
+    right: 30px;
+    top: 80px;
+    background: white;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    padding: 12px 16px;
+    z-index: 99;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 18px;
+    text-decoration: none;
+}
+
+.list-dropdown {
+    display: flex;
+    flex: auto;
+    height: 30px;
+    margin: 10px 0;
+    cursor: pointer
+}
+
+.list-dropdown img {
+    width: 30px;
+    height: 30px;
+}
+
+.text-dropdown {
+    color: black;
+    margin-top: 5px;
+    margin-left: 10px;
+    cursor: pointer;
+    font-weight: bold;
+}

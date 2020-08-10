@@ -1,5 +1,7 @@
 .App-detail {
     width: 100%;
+    position: absolute;
+    top: 0px;
 }
 
 .header-title {
@@ -16,7 +18,7 @@
     position: absolute;
     top: 80px;
     background: whitesmoke;
-    padding: 0 200px;
+    padding: 0 200px 100px 200px;
 }
 
 .facilities {
