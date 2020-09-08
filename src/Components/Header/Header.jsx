@@ -2,10 +2,9 @@ import React, { useState } from "react";
 import "./Header.css";
 import Dropdown from "../Dropdown/Dropdown";
 import profile from "../../Images/profile.png";
-
 import { Link } from "react-router-dom";
 
-const Header = ({ isLogin, showModalLogin, showModalRegister }) => {
+const Header = ({ showModalLogin, showModalRegister }) => {
   const [isProfileDropdown, setProfileDropdown] = useState(false);
 
   const showProfileDropdown = () => {
@@ -19,7 +18,7 @@ const Header = ({ isLogin, showModalLogin, showModalRegister }) => {
           <div className="header-left"></div>
         </Link>
         <div className="header-right">
-          {!isLogin && (
+          {!localStorage.token && (
             <div>
               <button className="btn-login" onClick={() => showModalLogin()}>
                 Login
@@ -32,7 +31,7 @@ const Header = ({ isLogin, showModalLogin, showModalRegister }) => {
               </button>
             </div>
           )}
-          {isLogin && (
+          {localStorage.token && (
             <div className="profile-header">
               <img src={profile} alt="" onClick={() => showProfileDropdown()} />
             </div>

@@ -1,55 +1,90 @@
 .App-payment {
-    width: 70.35%;
-    position: absolute;
-    top: 80px;
-    background: rgb(243, 243, 243);
-    padding: 0 200px 100px;
+  width: 70.35%;
+  position: absolute;
+  top: 80px;
+  background: rgb(243, 243, 243);
+  padding: 0 200px 100px;
 }
 
 .payment {
-
-    max-width: 100%;
-    background: white;
-    -webkit-box-shadow: 0 10px 6px -6px #777;
-    -moz-box-shadow: 0 10px 6px -6px #777;
-    box-shadow: 0 10px 6px -6px #777;
-    margin-top: 50px;
-    border-radius: 10px;
-    padding-bottom: 30px;
+  max-width: 100%;
+  background: white;
+  -webkit-box-shadow: 0 10px 6px -6px #777;
+  -moz-box-shadow: 0 10px 6px -6px #777;
+  box-shadow: 0 10px 6px -6px #777;
+  margin-top: 50px;
+  border-radius: 10px;
+  padding-bottom: 30px;
 }
 
 .payment-header {
-    margin-top: 0px;
-    width: 100%;
+  margin-top: 0px;
+  width: 100%;
 }
 
 .payment-header img {
-    margin-left: 20px;
-    margin-left: 20px;
+  margin-left: 20px;
+  margin-left: 20px;
 }
 
 .payment-header p {
-    font-size: 14px;
-    color: grey;
-    margin-top: 0px;
+  font-size: 14px;
+  color: grey;
+  margin-top: 0px;
 }
 
 .payment-detail {
-    display: flex;
-    margin-left: 20px;
+  display: flex;
+  margin-left: 20px;
 }
 
 .btn-pay {
-    background: #ffaf00;
-    color: white;
-    border: 0px;
-    border-radius: 10px;
-    padding: 10px 50px;
-    margin-top: 30px;
-    float: right;
-    font-weight: bold;
+  background: #ffaf00;
+  color: white;
+  border: 0px;
+  border-radius: 10px;
+  padding: 10px 50px;
+  margin-top: 30px;
+  float: right;
+  font-weight: bold;
+  cursor: pointer;
 }
 
-p {
-    font-size: 14px;
+.btn-cancel {
+  background: #fc2828;
+  color: white;
+  border: 0px;
+  border-radius: 10px;
+  padding: 10px 50px;
+  margin-top: 30px;
+  margin-right: 10px;
+  float: right;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.fitur h4 {
+  margin-bottom: 5px;
+}
+
+.fitur {
+  margin: 0 20px;
+}
+
+.fitur p {
+  margin: 0;
+  font-size: 14px;
+}
+
+.close-payment {
+  position: absolute;
+  right: 0;
+  color: white;
+  margin: 5px 10px;
+  text-align: right;
+  font-weight: bold;
+  background-color: #fc2828;
+  padding: 1px 5px;
+  border-radius: 2px;
+  cursor: pointer;
 }

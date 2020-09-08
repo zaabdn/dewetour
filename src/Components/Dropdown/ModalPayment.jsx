@@ -1,10 +1,43 @@
 import React from "react";
+import { useHistory, useLocation } from "react-router-dom";
+import axios from "axios";
 
-const ModalPayment = ({
-  showModalPayment,
-  closeModalPayment,
-  handlePayment,
-}) => {
+const ModalPayment = ({ showModalPayment, closeModalPayment, dataPayment }) => {
+  let history = useHistory();
+  const location = useLocation();
+
+  const config = {
+    headers: {
+      Authorization: `Bearer ${localStorage.token}`,
+    },
+  };
+
+  const updatePayment = (e) => {
+    e.preventDefault();
+    const dataUpdate = {
+      id: dataPayment.id,
+      counterQty: dataPayment.counterQty,
+      total: dataPayment.total,
+      status: "Waiting Approved",
+      attachment: dataPayment.attachment,
+      tripId: dataPayment.trip.id,
+      userId: dataPayment.userId,
+    };
+    axios
+      .patch(
+        `http://localhost:5001/api/v1/transaction/${dataPayment.id}`,
+        dataUpdate,
+        config
+      )
+      .then((result) => {
+        console.log(result);
+        history.push(location.pathname);
+        showModalPayment();
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
   return (
     <div
       style={{
@@ -17,9 +50,9 @@ const ModalPayment = ({
         overflow: "auto",
         backgroundColor: "rgba(0, 0, 0, 0.4)",
       }}
-      onClick={() => {
-        closeModalPayment();
-      }}
+      // onClick={() => {
+      //   closeModalPayment();
+      // }}
     >
       <div
         style={{
@@ -39,17 +72,18 @@ const ModalPayment = ({
           Your payment will be confirmed within 1 x 24 hours
           <br />
           To see orders click{" "}
-          <button
-            onClick={() => handlePayment()}
-            style={{
-              background: "transparent",
-              border: "0",
-              fontWeight: "bold",
-              fontSize: "18px",
-            }}
-          >
-            <u style={{ color: "#ffaf00" }}>Here</u>
-          </button>{" "}
+          <form onSubmit={updatePayment}>
+            <button
+              style={{
+                background: "transparent",
+                border: "0",
+                fontWeight: "bold",
+                fontSize: "18px",
+              }}
+            >
+              <u style={{ color: "#ffaf00", cursor: "pointer" }}>Here</u>
+            </button>
+          </form>{" "}
           thank you
         </h3>
       </div>

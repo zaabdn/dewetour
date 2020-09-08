@@ -21,7 +21,9 @@
     margin-right: 10px;
 }
 
-input {
+input,
+select,
+option {
     width: 100%;
     height: 35px;
     border: 0;
@@ -46,4 +48,5 @@ input {
     margin: 50px;
     color: white;
     font-weight: bolder;
+    cursor: pointer;
 }

@@ -1,6 +1,6 @@
 .modal {
     position: fixed;
-    z-index: 100;
+    /* z-index: 100; */
     padding-top: 100px;
     left: 0;
     top: 0;
@@ -26,7 +26,7 @@
     padding-right: 20px;
 }
 
-.form-group {
+.form-register {
     margin-bottom: 10px;
 }
 

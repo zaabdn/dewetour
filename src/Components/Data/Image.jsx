@@ -38,7 +38,7 @@ export const groupImage = [
     img: group4,
     part: "12/15",
     title: "4D/3N Labuan Bajo Delight",
-    price: "IDR. 10,488,000",
+    price: "10488000",
     place: "Indonesia",
   },
 

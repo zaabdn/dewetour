@@ -1,18 +1,13 @@
 import React, { useState, useEffect } from "react";
-import account from "../../Images/account.png";
-import message from "../../Images/message.png";
-import loc from "../../Images/loc.png";
-import telephone from "../../Images/telephone.png";
 
 import img from "../../Images/img.png";
 import barcode from "../../Images/Group.png";
 import logo from "../../Images/Icon-payment.png";
-import "./Profile.css";
 import "../Payment/Payment.css";
 import { API } from "../Config/api";
 import CurrencyFormat from "react-currency-format";
 
-const Profile = () => {
+const ListPayment = () => {
   const config = {
     headers: {
       Authorization: `Bearer ${localStorage.token}`,
@@ -54,52 +49,19 @@ const Profile = () => {
     console.log(localStorage.id);
     return detail.user.id == localStorage.id;
   });
+
+  const payment = tour.filter((detail) => {
+    console.log(localStorage.id);
+    return detail.status == "Waiting Payment";
+  });
+
   useEffect(() => {
     fetchTransactionList();
   });
   return (
     <div className="App-profile">
-      <div className="profile">
-        <div className="info">
-          <h1>Personal Info</h1>
-          <div className="detail-info">
-            <img src={account} alt="" />
-            <div>
-              <h3>{localStorage.fullName}</h3>
-              <p>Full name</p>
-            </div>
-          </div>
-          <div className="detail-info">
-            <img src={message} alt="" />
-            <div>
-              <h3>{localStorage.email}</h3>
-              <p>Email</p>
-            </div>
-          </div>
-          <div className="detail-info">
-            <img src={telephone} alt="" />
-            <div>
-              <h3>{localStorage.phone}</h3>
-              <p>Mobile Phone</p>
-            </div>
-          </div>
-          <div className="detail-info">
-            <img src={loc} alt="" />
-            <div>
-              <h3>{localStorage.address}</h3>
-              <p>Alamat</p>
-            </div>
-          </div>
-        </div>
-        <div className="image">
-          <img src={img} alt="" align="right" />
-          <button className="btn-change" align="right">
-            Change Profile Picture
-          </button>
-        </div>
-      </div>
-      <h1>History Trip</h1>
-      {tour.map((transaction) => (
+      <h1>List Payment</h1>
+      {payment.map((transaction) => (
         <div className="payment" key={transaction.id}>
           <div className="payment-header">
             <img src={logo} alt="logo" align="left" />
@@ -266,4 +228,4 @@ const Profile = () => {
   );
 };
 
-export default Profile;
+export default ListPayment;

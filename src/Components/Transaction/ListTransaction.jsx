@@ -1,117 +1,112 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./ListTransaction.css";
 import search from "../../Images/search.png";
 import ModalBooking from "../Transaction/ModalBooking";
+import { API } from "../Config/api";
 
 const ListTransaction = () => {
   const [isModalBooking, setModalBooking] = useState(false);
+  const [errorForm, setErrorForm] = useState();
+  const [idTransaction, setIdTransaction] = useState();
 
-  const showModalBooking = () => {
+  const showModalBooking = (event) => {
+    setIdTransaction(event.target.getAttribute("id"));
     setModalBooking(!isModalBooking);
   };
 
-  const closeModalBooking = () => {
-    setModalBooking(false);
+  const config = {
+    headers: {
+      Authorization: `Bearer ${localStorage.token}`,
+    },
   };
+
+  const [transactions, setTransaction] = useState([]);
+  const fetchTransactionList = async () => {
+    try {
+      const response = await API.get("/transaction", config);
+      const result = response.data.data;
+      setTransaction(result);
+    } catch (err) {
+      setErrorForm(err.response.data.error.message);
+    }
+  };
+
+  useEffect(() => {
+    fetchTransactionList();
+  });
 
   return (
     <div className="App-transaction">
       <h1>Incoming Transaction</h1>
-      <table className="tabel">
+      {errorForm && (
+        <span
+          style={{
+            color: "red",
+            background: "rgba(252, 78, 78, 0.5)",
+            padding: "2px 10px",
+            borderRadius: "5px",
+            position: "absolute",
+            top: "230px",
+            left: "36%",
+            fontSize: "14px",
+          }}
+        >
+          {errorForm}
+        </span>
+      )}
+      {!transactions ? (
         <tr>
-          <th>No</th>
-          <th>Users</th>
-          <th>Trip</th>
-          <th>Bukti Transfer</th>
-          <th>Status Payment</th>
-          <th>Action</th>
+          <td>no data</td>
         </tr>
-        <tr>
-          <td>1</td>
-          <td>Zainal Abidin</td>
-          <td>6D/4N Fun Tassie Vaca ...</td>
-          <td>bca.jpg</td>
-          <td className="pending">Pending</td>
-          <td>
-            <img src={search} alt="" onClick={() => showModalBooking()} />
-          </td>
-        </tr>
-        <tr>
-          <td>2</td>
-          <td>Mason Greenwood</td>
-          <td>6D/4N Exciting Summer...</td>
-          <td>bca.jpg</td>
-          <td className="approve">Approve</td>
-          <td>
-            <img src={search} alt="" onClick={() => showModalBooking()} />
-          </td>
-        </tr>
-        <tr>
-          <td>3</td>
-          <td>Aishakina</td>
-          <td>6D/4N Fun Tassie Vaca ...</td>
-          <td>bca.jpg</td>
-          <td className="cancel">Cancel</td>
-          <td>
-            <img src={search} alt="" onClick={() => showModalBooking()} />
-          </td>
-        </tr>
-        <tr>
-          <td>4</td>
-          <td>Rachel Florencia</td>
-          <td>6D/4N Wonderful Autum ...</td>
-          <td>bca.jpg</td>
-          <td className="pending">Pending</td>
-          <td>
-            <img src={search} alt="" onClick={() => showModalBooking()} />
-          </td>
-        </tr>
-        <tr>
-          <td>5</td>
-          <td>Cristiano Ronaldo</td>
-          <td>6D/4N Fun Tassie Vaca ...</td>
-          <td>bca.jpg</td>
-          <td className="approve">Approve</td>
-          <td>
-            <img src={search} alt="" onClick={() => showModalBooking()} />
-          </td>
-        </tr>
-        <tr>
-          <td>6</td>
-          <td>Eden Hazard</td>
-          <td>6D/4N Exciting Summer...</td>
-          <td>bca.jpg</td>
-          <td className="pending">Pending</td>
-          <td>
-            <img src={search} alt="" onClick={() => showModalBooking()} />
-          </td>
-        </tr>
-        <tr>
-          <td>7</td>
-          <td>Pandji Pragiwaksono</td>
-          <td>6D/4N Fun Tassie Vaca ...</td>
-          <td>bca.jpg</td>
-          <td className="cancel">Cancel</td>
-          <td>
-            <img src={search} alt="" onClick={() => showModalBooking()} />
-          </td>
-        </tr>
-        <tr>
-          <td>8</td>
-          <td>Maudy Ayunda</td>
-          <td>6D/4N Wonderful Autum ...</td>
-          <td>bca.jpg</td>
-          <td className="pending">Pending</td>
-          <td>
-            <img src={search} alt="" onClick={() => showModalBooking()} />
-          </td>
-        </tr>
-      </table>
+      ) : (
+        <table className="tabel">
+          <tbody>
+            <tr>
+              <th>No</th>
+              <th>Users</th>
+              <th>Trip</th>
+              <th>Bukti Transfer</th>
+              <th>Status Payment</th>
+              <th>Action</th>
+            </tr>
+          </tbody>
+          <tbody>
+            {transactions.map((transaction, no) => (
+              <tr key={transaction.id}>
+                <td>{no + 1}</td>
+                <td>{transaction.user.fullName}</td>
+                <td>{transaction.trip.title}</td>
+                <td>{transaction.attachment}</td>
+                {transaction.status === "Waiting Payment" && (
+                  <td className="cancel">{transaction.status}</td>
+                )}
+                {transaction.status === "Waiting Approved" && (
+                  <td className="pending">{transaction.status}</td>
+                )}
+                {transaction.status === "Approved" && (
+                  <td className="approved">{transaction.status}</td>
+                )}
+                {transaction.status === "Cancel" && (
+                  <td className="cancel">{transaction.status}</td>
+                )}
+                <td>
+                  <img
+                    src={search}
+                    alt=""
+                    style={{ cursor: "pointer" }}
+                    onClick={(e) => {
+                      showModalBooking(e);
+                    }}
+                    id={transaction.id}
+                  />
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      )}
       {isModalBooking && (
-        <ModalBooking
-          showModalBooking={showModalBooking}
-          closeModalBooking={closeModalBooking}
-        />
+        <ModalBooking showModalBooking={showModalBooking} id={idTransaction} />
       )}
     </div>
   );
